@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services — IVᵗʰ•MΛN Forge</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="subpage">
+
+<header class="site-header">
+  <div class="hero-cta-row">
+    <h2><a href="index.html">Home</a></h2>
+    <h2><a href="about.html">About Me</a></h2>
+    <h2><a href="services.html" aria-current="page">Services</a></h2>
+    <a href="portfolio.html" class="btn">View My Work</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <section class="section">
+      <h2>Services</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>🎬 Video Editing</h3>
+          <p>Cinematic edits</p>
+          <p>Motion graphics</p>
+        </div>
+        <div class="card">
+          <h3>🎨 Design</h3>
+          <p>Thumbnails</p>
+          <p>Branding</p>
+        </div>
+        <div class="card">
+          <h3>💻 Web Development</h3>
+          <p>Frontend websites</p>
+          <p>UI/UX design</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="hero-footer">
+  <div class="hero-footer-bar">
+    <a href="mailto:fadareprogress@gmail.com">fadareprogress@gmail.com</a>
+    <span class="hero-footer-sep">|</span>
+    <span>IG <a href="#">@thefourthmvn</a></span>
+    <span class="hero-footer-sep">|</span>
+    <span>X <a href="#">@thefourthmvn</a></span>
+    <span class="hero-footer-sep">|</span>
+    <span>TikTok <a href="#">@thefourthmvn</a></span>
+    <a href="mailto:fadareprogress@gmail.com" class="btn">Hire Me</a>
+  </div>
+</footer>
+
+<script>
+const cards = document.querySelectorAll(".card");
+function revealCards() {
+  cards.forEach(card => {
+    const top = card.getBoundingClientRect().top;
+    if (top < window.innerHeight - 50) {
+      card.classList.add("show");
+    }
+  });
+}
+window.addEventListener("scroll", revealCards);
+window.addEventListener("load", revealCards);
+</script>
+
+</body>
+</html>
