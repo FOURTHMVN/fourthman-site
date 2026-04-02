@@ -6,6 +6,8 @@
   --gold: #D4AF37;
   --gold-glow: #F5D97A;
   --ember: #FF6A00;
+  --hero-tagline: rgba(245, 243, 238, 0.92);
+  --hero-sub: rgba(186, 184, 178, 0.88);
 }
 
 body {
@@ -141,9 +143,17 @@ body {
   background-size: 100% 100%, 100% 100%;
 }
 
-.hero-main > div {
+.hero-main > .hero-content {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 24px;
+  gap: 0;
 }
 
 .hero-footer {
@@ -190,7 +200,11 @@ body {
 }
 
 .hero h1 {
-  font-size: 48px;
+  margin: 0;
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0.02em;
   color: var(--gold);
   -webkit-text-stroke: 1px rgba(12, 10, 8, 0.92);
   paint-order: stroke fill;
@@ -198,20 +212,41 @@ body {
     0 0 1px rgba(0, 0, 0, 0.9),
     1px 1px 0 rgba(0, 0, 0, 0.45),
     -1px -1px 0 rgba(0, 0, 0, 0.35),
-    0 3px 12px rgba(0, 0, 0, 0.55),
-    0 0 22px rgba(212, 175, 55, 0.5),
-    0 0 36px rgba(255, 106, 0, 0.12);
-  animation: fadeUp 1s ease forwards;
+    0 3px 14px rgba(0, 0, 0, 0.55),
+    0 0 26px rgba(212, 175, 55, 0.48),
+    0 0 44px rgba(245, 217, 122, 0.22);
+  animation:
+    fadeUp 1s ease forwards,
+    heroTitleGlow 5s ease-in-out 1.2s infinite;
 }
 
-.tagline {
-  color: var(--gold-glow);
-  animation: fadeUp 1.3s ease forwards;
+.hero .tagline {
+  margin: 0;
+  margin-top: 1.75rem;
+  font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  color: var(--hero-tagline);
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.75);
+  animation: fadeUp 1.15s ease forwards;
+  animation-delay: 0.08s;
+  animation-fill-mode: both;
 }
 
-.sub {
-  color: var(--text-secondary);
-  animation: fadeUp 1.6s ease forwards;
+.hero .sub {
+  margin: 0;
+  margin-top: 0.875rem;
+  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hero-sub);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.65);
+  animation: fadeUp 1.25s ease forwards;
+  animation-delay: 0.16s;
+  animation-fill-mode: both;
 }
 
 .hero-cta-row {
@@ -220,8 +255,11 @@ body {
   align-items: center;
   justify-content: center;
   gap: 16px 24px;
-  margin-top: 24px;
-  animation: fadeUp 1.9s ease forwards;
+  margin: 0;
+  margin-top: 2.75rem;
+  animation: fadeUp 1.35s ease forwards;
+  animation-delay: 0.24s;
+  animation-fill-mode: both;
 }
 
 .hero-cta-row h2 {
@@ -395,19 +433,55 @@ a {
   }
 }
 
+@keyframes heroTitleGlow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 1px rgba(0, 0, 0, 0.9),
+      1px 1px 0 rgba(0, 0, 0, 0.45),
+      -1px -1px 0 rgba(0, 0, 0, 0.35),
+      0 3px 14px rgba(0, 0, 0, 0.55),
+      0 0 22px rgba(212, 175, 55, 0.42),
+      0 0 38px rgba(245, 217, 122, 0.18);
+  }
+  50% {
+    text-shadow:
+      0 0 1px rgba(0, 0, 0, 0.9),
+      1px 1px 0 rgba(0, 0, 0, 0.45),
+      -1px -1px 0 rgba(0, 0, 0, 0.35),
+      0 3px 14px rgba(0, 0, 0, 0.55),
+      0 0 34px rgba(212, 175, 55, 0.62),
+      0 0 52px rgba(245, 217, 122, 0.32),
+      0 0 72px rgba(255, 106, 0, 0.08);
+  }
+}
+
 @media (max-width: 700px) {
   .hero h1 {
-    font-size: 32px;
     -webkit-text-stroke: 0.75px rgba(12, 10, 8, 0.9);
+  }
+
+  .hero .tagline {
+    margin-top: 1.35rem;
+  }
+
+  .hero .sub {
+    margin-top: 0.75rem;
+    letter-spacing: 0.1em;
   }
 
   .hero-cta-row {
     flex-direction: column;
     gap: 14px;
+    margin-top: 2.25rem;
   }
 
   .hero-cta-row .btn {
     order: -1;
+  }
+
+  .hero-main > .hero-content {
+    padding: 0 20px;
   }
 
   .hero-footer-bar {
